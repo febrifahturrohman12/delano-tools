@@ -33,7 +33,7 @@ project/
 | `/vibe:decide` | Catat satu keputusan arsitektur ke `DECISIONS.md` (ADR ringkas) biar tak diperdebatkan ulang |
 | `/vibe:check` | Self-audit jujur sesi terhadap 7 dimensi vibe-coding (praktik, bukan menyiasati penilai) |
 | `/vibe:slim` | Audit `CLAUDE.md` dan usulkan pemangkasan (dibaca tiap pesan, wajib ramping) |
-| `/vibe:models` | Set model per-project: leader (`.claude/settings.json`) + subagent goblin/gremlin (`.claude/agents/`) |
+| `/vibe:models` | Dialog interaktif: pilih metode akun (**Default** ikut login, atau **CC** proxy dengan input base URL + token) lalu set model leader + subagent goblin/gremlin per-project |
 
 **Agents** (nama sengaja unik biar tak bentrok dengan agent tim lain)
 - `goblin` (sonnet) — peran *coder*: menulis/mengubah kode; delegasikan penulisan kode ke sini.
