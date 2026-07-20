@@ -26,9 +26,12 @@ project/
 | --- | --- |
 | `/vibe:init` | Scaffold `CLAUDE.md`, `PROGRESS.md`, `HANDOFF.md`, `DECISIONS.md` ke project (tanpa menimpa yang sudah ada) |
 | `/vibe:context` | Muat ulang konteks (`HANDOFF`/`PROGRESS`/`DECISIONS`) jadi briefing tipis — pemanasan sesi baru setelah `/clear` |
+| `/vibe:plan` | Plan-gate di awal + pecah jadi todo terurut sebelum eksekusi (Planning + Decomposition) |
+| `/vibe:verify` | Jalankan test/build/run, periksa hasil, tindak lanjuti kegagalan (Verifikasi) |
 | `/vibe:handoff` | Ringkas sesi ke `HANDOFF.md` sebelum `/clear` — offload+reset, paling hemat token |
 | `/vibe:progress` | Update `PROGRESS.md` (checklist state) |
 | `/vibe:decide` | Catat satu keputusan arsitektur ke `DECISIONS.md` (ADR ringkas) biar tak diperdebatkan ulang |
+| `/vibe:check` | Self-audit jujur sesi terhadap 7 dimensi vibe-coding (praktik, bukan menyiasati penilai) |
 | `/vibe:slim` | Audit `CLAUDE.md` dan usulkan pemangkasan (dibaca tiap pesan, wajib ramping) |
 | `/vibe:models` | Set model per-project: leader (`.claude/settings.json`) + subagent goblin/gremlin (`.claude/agents/`) |
 
@@ -74,6 +77,10 @@ Setelah ubah file, jalankan `/reload-plugins`.
 3. Delegasikan pencarian ke `gremlin` dan penulisan kode ke `goblin` (context mereka terpisah = firewall context).
 4. Saat context mulai penuh / ganti topik: `/vibe:handoff` → `/clear` → sesi baru `/vibe:context` untuk pemanasan.
 5. Rujuk file dengan `path:line`, jangan tempel isi file panjang.
+
+## Selaras 7 dimensi vibe-coding
+
+Vibe bukan cuma soal token (itu 1 dari 7 dimensi). Command-nya dipetakan ke praktik vibe-coding berkualitas: **Planning** (`/vibe:plan`), **Context** (`/vibe:context`), **Decomposition** (`/vibe:plan`), **Delegasi** (`goblin`/`gremlin`), **Verifikasi** (`/vibe:verify`), **Efisiensi Token** (`/vibe:handoff`+`/clear`, `/vibe:slim`), **Dokumentasi** (`/vibe:decide`, `/vibe:handoff`). Peta lengkap + catatan integritas ada di [`RUBRIC.md`](RUBRIC.md). Prinsip: **perbaiki praktiknya, skor mengikuti** — vibe tak pernah menyiasati penilai.
 
 ## Catatan
 
