@@ -1,0 +1,15 @@
+{
+  "name": "vibe-marketplace",
+  "description": "Token-hygiene toolkit untuk vibe coding dengan Claude Code.",
+  "owner": {
+    "name": "Febri Fahturrohman",
+    "email": "febrifahturrohman12@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "vibe",
+      "source": "./",
+      "description": "Token-hygiene toolkit for vibe coding with Claude Code."
+    }
+  ]
+}

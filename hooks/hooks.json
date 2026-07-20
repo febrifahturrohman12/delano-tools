@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "test -f HANDOFF.md && echo 'vibe: HANDOFF.md terdeteksi — baca dulu untuk melanjutkan konteks sesi sebelumnya.' || true"
+          }
+        ]
+      }
+    ]
+  }
+}
