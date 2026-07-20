@@ -1,0 +1,48 @@
+{
+  "name": "sentry",
+  "description": "Sentry error-tracking via MCP: slash commands + natural language untuk issues/events/fix/resolve (self-hosted & cloud).",
+  "version": "1.0.0",
+  "author": {
+    "name": "Febri Fahturrohman"
+  },
+  "keywords": ["sentry", "mcp", "error-tracking", "observability"],
+  "userConfig": {
+    "sentry_host": {
+      "type": "string",
+      "title": "Sentry Host",
+      "description": "Host instance Sentry tanpa https:// (mis. sentry.company.com atau sentry.io)",
+      "required": true
+    },
+    "sentry_org": {
+      "type": "string",
+      "title": "Organization Slug",
+      "description": "Slug organisasi Sentry (mis. my-org)",
+      "required": true
+    },
+    "sentry_project": {
+      "type": "string",
+      "title": "Project Slug",
+      "description": "Slug project Sentry (mis. my-project)",
+      "required": true
+    },
+    "sentry_token": {
+      "type": "string",
+      "title": "Access Token",
+      "description": "Sentry access token dengan scope: project:read, event:read, issue:read, issue:write, org:read, team:read",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "mcpServers": {
+    "sentry": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@sentry/mcp-server"],
+      "env": {
+        "SENTRY_ACCESS_TOKEN": "${user_config.sentry_token}",
+        "SENTRY_HOST": "${user_config.sentry_host}",
+        "MCP_DISABLE_SKILLS": "seer"
+      }
+    }
+  }
+}

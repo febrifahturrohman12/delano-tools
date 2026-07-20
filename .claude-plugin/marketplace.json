@@ -10,6 +10,11 @@
       "name": "vibe",
       "source": "./vibe",
       "description": "Token-hygiene + vibe-coding toolkit (selaras 7 dimensi) untuk Claude Code."
+    },
+    {
+      "name": "sentry",
+      "source": "./sentry",
+      "description": "Sentry error-tracking via MCP: slash commands + natural language untuk issues/events/fix/resolve."
     }
   ]
 }

@@ -12,12 +12,14 @@ Marketplace privat berisi plugin Claude Code buatan sendiri. Pasang lewat Claude
 | Plugin | Folder | Fungsi |
 | --- | --- | --- |
 | **vibe** | [`vibe/`](vibe/) | Token-hygiene + vibe-coding toolkit, selaras 7 dimensi vibe-coding. Lihat [`vibe/README.md`](vibe/README.md). |
+| **sentry** | [`sentry/`](sentry/) | Sentry error-tracking via MCP: `/sentry:*` commands + natural language. Lihat [`sentry/README.md`](sentry/README.md). |
 
 ## Struktur
 
 ```
 .claude-plugin/marketplace.json   # katalog marketplace "delano-tools"
-vibe/                             # plugin vibe (punya .claude-plugin/plugin.json sendiri)
+vibe/                             # plugin vibe   (punya .claude-plugin/plugin.json sendiri)
+sentry/                           # plugin sentry (MCP server + /sentry:* commands)
 ```
 
 Menambah plugin baru: buat folder plugin baru di root, tambahkan entri di `.claude-plugin/marketplace.json` (`name`, `source`, `description`).

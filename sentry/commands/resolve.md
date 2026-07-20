@@ -1,0 +1,16 @@
+---
+description: "Ubah status Sentry issue: resolve / ignore / reopen."
+allowed-tools: mcp__plugin_sentry_sentry__update_issue
+---
+
+**Parse $ARGUMENTS:**
+- Arg 1: Issue ID (PROJECT-123)
+- Arg 2: Action mapping:
+  - "resolved/resolve/done/fix" → status: `resolved`
+  - "ignored/ignore/skip" → status: `ignored`
+  - "unresolved/reopen" → status: `unresolved`
+- Natural language → parse ID and action from sentence
+
+No action given → default to `resolved`, confirm with user first.
+
+Call `update_issue` with `organizationSlug`: "${user_config.sentry_org}", `regionUrl`: "https://${user_config.sentry_host}", `issueId`, `status`.
