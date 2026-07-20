@@ -1,5 +1,5 @@
 ---
-description: Set model per-project untuk leader (sesi) dan subagent coder/explorer. Jalankan sekali per project saat ingin mengunci model.
+description: Set model per-project untuk leader (sesi) dan subagent goblin/gremlin. Jalankan sekali per project saat ingin mengunci model.
 disable-model-invocation: true
 ---
 
@@ -9,11 +9,11 @@ Mengunci model untuk project saat ini di folder `.claude/`, terpisah dari plugin
 
 Default (kalau `$ARGUMENTS` kosong):
 - **leader** → `claude-opus-4-8`
-- **coder** → `claude-sonnet-5`
-- **explorer** → `claude-haiku-4-5-20251001`
+- **goblin** (coder) → `claude-sonnet-5`
+- **gremlin** (explorer) → `claude-haiku-4-5-20251001`
 
 Override via `$ARGUMENTS`, format `peran=model`, contoh:
-`/vibe:models leader=sonnet coder=opus explorer=haiku`
+`/vibe:models leader=sonnet goblin=opus gremlin=haiku`
 
 Alias yang dikenali (petakan ke ID lengkap):
 - `opus` → `claude-opus-4-8`
@@ -29,10 +29,11 @@ Langkah:
    - Kalau file belum ada → buat `{ "model": "<leader>" }`.
    - Kalau sudah ada → tamb/ubah **hanya** key `"model"`, **pertahankan** key lain (mis. `enabledPlugins`). Jangan menimpa seluruh file.
    - Kalau leader = `inherit` → jangan tulis key `model` (atau hapus bila ada), biar ikut global.
-3. **coder & explorer** — buat override per-project dengan **menyalin** definisi dari plugin lalu mengganti baris `model:`:
-   - Salin `${CLAUDE_PLUGIN_ROOT}/agents/coder.md` → `.claude/agents/coder.md`, ganti frontmatter `model:` jadi `<coder>`.
-   - Salin `${CLAUDE_PLUGIN_ROOT}/agents/explorer.md` → `.claude/agents/explorer.md`, ganti `model:` jadi `<explorer>`.
+3. **goblin & gremlin** — buat override per-project dengan **menyalin** definisi dari plugin lalu mengganti baris `model:`:
+   - Salin `${CLAUDE_PLUGIN_ROOT}/agents/goblin.md` → `.claude/agents/goblin.md`, ganti frontmatter `model:` jadi `<goblin>`.
+   - Salin `${CLAUDE_PLUGIN_ROOT}/agents/gremlin.md` → `.claude/agents/gremlin.md`, ganti `model:` jadi `<gremlin>`.
    - Ini menyalin isi terbaru dari plugin (DRY) — hanya model yang berbeda. Kalau peran = `inherit`, set `model: inherit`.
+   - Nama argumen `coder`/`explorer` tetap diterima sebagai alias peran (coder→goblin, explorer→gremlin) untuk kenyamanan.
 4. Tampilkan ringkasan: model tiap peran + path file yang ditulis.
 
 Ingatkan user:

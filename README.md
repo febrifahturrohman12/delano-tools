@@ -30,11 +30,11 @@ project/
 | `/vibe:progress` | Update `PROGRESS.md` (checklist state) |
 | `/vibe:decide` | Catat satu keputusan arsitektur ke `DECISIONS.md` (ADR ringkas) biar tak diperdebatkan ulang |
 | `/vibe:slim` | Audit `CLAUDE.md` dan usulkan pemangkasan (dibaca tiap pesan, wajib ramping) |
-| `/vibe:models` | Set model per-project: leader (`.claude/settings.json`) + subagent coder/explorer (`.claude/agents/`) |
+| `/vibe:models` | Set model per-project: leader (`.claude/settings.json`) + subagent goblin/gremlin (`.claude/agents/`) |
 
-**Agents**
-- `coder` (sonnet) — menulis/mengubah kode; delegasikan penulisan kode ke sini.
-- `explorer` (haiku) — pencarian read-only lintas file; kembalikan kesimpulan, bukan dump file.
+**Agents** (nama sengaja unik biar tak bentrok dengan agent tim lain)
+- `goblin` (sonnet) — peran *coder*: menulis/mengubah kode; delegasikan penulisan kode ke sini.
+- `gremlin` (haiku) — peran *explorer*: pencarian read-only lintas file; kembalikan kesimpulan, bukan dump file.
 
 Model default ini global (dari plugin). Untuk mengunci model **per-project** (leader + subagent), jalankan `/vibe:models` — menulis ke `.claude/settings.json` dan `.claude/agents/`.
 
@@ -71,11 +71,11 @@ Setelah ubah file, jalankan `/reload-plugins`.
 
 1. `/vibe:init` sekali per project → arsitektur file terpasang.
 2. Jaga `CLAUDE.md` ramping (< 100 baris); cek berkala dengan `/vibe:slim`.
-3. Delegasikan pencarian ke `explorer` dan penulisan kode ke `coder` (context mereka terpisah = firewall context).
+3. Delegasikan pencarian ke `gremlin` dan penulisan kode ke `goblin` (context mereka terpisah = firewall context).
 4. Saat context mulai penuh / ganti topik: `/vibe:handoff` → `/clear` → sesi baru `/vibe:context` untuk pemanasan.
 5. Rujuk file dengan `path:line`, jangan tempel isi file panjang.
 
 ## Catatan
 
-- Model `coder`/`explorer` bisa diubah di `agents/*.md` sesuai kebutuhan tiap akun/plan.
+- Model `goblin`/`gremlin` bisa diubah di `agents/*.md` sesuai kebutuhan tiap akun/plan (atau per-project via `/vibe:models`).
 - Definisi agent di project (`.claude/agents/`) dengan nama sama akan menimpa versi plugin.
