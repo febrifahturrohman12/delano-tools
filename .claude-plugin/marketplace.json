@@ -1,6 +1,6 @@
 {
-  "name": "vibe-marketplace",
-  "description": "Token-hygiene toolkit untuk vibe coding dengan Claude Code.",
+  "name": "delano-tools",
+  "description": "Marketplace plugin Claude Code milik Delano.",
   "owner": {
     "name": "Febri Fahturrohman",
     "email": "febrifahturrohman12@gmail.com"
@@ -8,8 +8,8 @@
   "plugins": [
     {
       "name": "vibe",
-      "source": "./",
-      "description": "Token-hygiene toolkit for vibe coding with Claude Code."
+      "source": "./vibe",
+      "description": "Token-hygiene + vibe-coding toolkit (selaras 7 dimensi) untuk Claude Code."
     }
   ]
 }
