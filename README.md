@@ -30,10 +30,13 @@ project/
 | `/vibe:progress` | Update `PROGRESS.md` (checklist state) |
 | `/vibe:decide` | Catat satu keputusan arsitektur ke `DECISIONS.md` (ADR ringkas) biar tak diperdebatkan ulang |
 | `/vibe:slim` | Audit `CLAUDE.md` dan usulkan pemangkasan (dibaca tiap pesan, wajib ramping) |
+| `/vibe:models` | Set model per-project: leader (`.claude/settings.json`) + subagent coder/explorer (`.claude/agents/`) |
 
 **Agents**
 - `coder` (sonnet) — menulis/mengubah kode; delegasikan penulisan kode ke sini.
 - `explorer` (haiku) — pencarian read-only lintas file; kembalikan kesimpulan, bukan dump file.
+
+Model default ini global (dari plugin). Untuk mengunci model **per-project** (leader + subagent), jalankan `/vibe:models` — menulis ke `.claude/settings.json` dan `.claude/agents/`.
 
 **Hooks**
 - `SessionStart` — menyarankan `/vibe:context` bila `HANDOFF.md` ada.
