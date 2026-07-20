@@ -3,7 +3,7 @@
 Marketplace privat berisi plugin Claude Code buatan sendiri. Pasang lewat Claude Code:
 
 ```
-/plugin marketplace add https://github.com/febrifahturrohman12/vibe-plugin
+/plugin marketplace add https://github.com/febrifahturrohman12/delano-tools
 /plugin install <plugin>@delano-tools
 ```
 

@@ -47,11 +47,11 @@ Model default ini global (dari plugin). Untuk mengunci model **per-project** (le
 
 ## Install (via marketplace privat `delano-tools`)
 
-Plugin ini hidup di dalam marketplace **`delano-tools`** (repo privat `febrifahturrohman12/vibe-plugin`, plugin di subfolder `vibe/`).
+Plugin ini hidup di dalam marketplace **`delano-tools`** (repo privat `febrifahturrohman12/delano-tools`, plugin di subfolder `vibe/`).
 
 1. Di Claude Code:
    ```
-   /plugin marketplace add https://github.com/febrifahturrohman12/vibe-plugin
+   /plugin marketplace add https://github.com/febrifahturrohman12/delano-tools
    /plugin install vibe@delano-tools
    ```
 2. Di project mana pun:
@@ -63,7 +63,7 @@ Update plugin: push perubahan ke repo, lalu `/plugin marketplace update delano-t
 
 ### Test lokal tanpa install
 ```bash
-claude --plugin-dir /path/ke/vibe-plugin
+claude --plugin-dir /path/ke/delano-tools/vibe
 ```
 Setelah ubah file, jalankan `/reload-plugins`.
 
