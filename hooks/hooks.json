@@ -5,7 +5,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "test -f HANDOFF.md && echo 'vibe: HANDOFF.md terdeteksi — baca dulu untuk melanjutkan konteks sesi sebelumnya.' || true"
+            "command": "test -f .vibe/HANDOFF.md && echo 'vibe: .vibe/HANDOFF.md terdeteksi — jalankan /vibe:context untuk memuat konteks sesi sebelumnya secara ringkas.' || true"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'vibe: context akan di-compact. Pertimbangkan /vibe:handoff dulu agar status & langkah berikutnya tersimpan sadar ke HANDOFF.md, bukan diringkas otomatis.'"
           }
         ]
       }
