@@ -67,13 +67,43 @@ claude --plugin-dir /path/ke/delano-tools/vibe
 ```
 Setelah ubah file, jalankan `/reload-plugins`.
 
-## Workflow hemat token (ringkas)
+## Cara pakai (langkah demi langkah)
 
-1. `/vibe:init` sekali per project → arsitektur file terpasang.
-2. Jaga `CLAUDE.md` ramping (< 100 baris); cek berkala dengan `/vibe:slim`.
-3. Delegasikan pencarian ke `gremlin` dan penulisan kode ke `goblin` (context mereka terpisah = firewall context).
-4. Saat context mulai penuh / ganti topik: `/vibe:handoff` → `/clear` → sesi baru `/vibe:context` untuk pemanasan.
-5. Rujuk file dengan `path:line`, jangan tempel isi file panjang.
+Baru pertama coba? Ikuti urutan ini. Ada dua fase: **sekali per project** (setup) lalu **tiap sesi kerja** (siklus).
+
+### 1. Sekali per project (setup)
+
+Jalankan **di root project yang mau digarap** (bukan folder home):
+
+```
+/vibe:init      # scaffold CLAUDE.md + folder .vibe/ (HANDOFF/PROGRESS/DECISIONS), auto-ignore
+/vibe:models    # opsional: kunci model leader + goblin/gremlin per-project
+```
+
+### 2. Tiap sesi kerja (siklus)
+
+Urutannya sengaja — tiap langkah menutup satu dimensi vibe-coding:
+
+| # | Langkah | Command / aksi | Kapan |
+|---|---|---|---|
+| 1 | Pemanasan | `/vibe:context` | Awal sesi (mis. setelah `/clear`) |
+| 2 | Rencanakan | `/vibe:plan` | **Sebelum** mulai ngoding |
+| 3 | Eksekusi | delegasi ke `goblin` (tulis kode) & `gremlin` (cari file) | Saat menggarap |
+| 4 | Buktikan | `/vibe:verify` | Setelah ada perubahan |
+| 5 | Catat | `/vibe:decide` / `/vibe:progress` | Ada keputusan / kemajuan |
+| 6 | Tutup | `/vibe:handoff` → `/clear` | Context penuh / ganti topik |
+| 7 | Audit | `/vibe:check` | Sebelum menutup sesi |
+
+Sesi berikutnya balik ke langkah 1 (`/vibe:context`) untuk pemanasan dari `HANDOFF.md`.
+
+### 3. Kebiasaan biar efeknya nyata
+
+1. Jaga `CLAUDE.md` **ramping** (< 100 baris); cek berkala dengan `/vibe:slim`.
+2. **Delegasi beneran** — jangan tulis kode di leader; lempar ke `goblin`. Butuh cari file? lempar ke `gremlin`. Context mereka terpisah = firewall context = hemat token.
+3. Rujuk file dengan `path:line`, **jangan tempel isi file panjang** ke prompt.
+4. Offload sadar: `/vibe:handoff` **sebelum** `/clear`, bukan mengandalkan ringkasan otomatis.
+
+> Prinsip (lihat [`RUBRIC.md`](RUBRIC.md)): **perbaiki praktiknya, skor mengikuti sendiri.** Vibe tidak pernah menyiasati penilai.
 
 ## Selaras 7 dimensi vibe-coding
 

@@ -11,7 +11,7 @@ Marketplace privat berisi plugin Claude Code buatan sendiri. Pasang lewat Claude
 
 | Plugin | Folder | Fungsi |
 | --- | --- | --- |
-| **vibe** | [`vibe/`](vibe/) | Token-hygiene + vibe-coding toolkit, selaras 7 dimensi vibe-coding. Lihat [`vibe/README.md`](vibe/README.md). |
+| **vibe** | [`vibe/`](vibe/) | Token-hygiene + vibe-coding toolkit, selaras 7 dimensi vibe-coding. Baru coba? Lihat [**Cara pakai (langkah demi langkah)**](vibe/README.md#cara-pakai-langkah-demi-langkah). |
 | **sentry** | [`sentry/`](sentry/) | Sentry error-tracking via MCP: `/sentry:*` commands + natural language. Lihat [`sentry/README.md`](sentry/README.md). |
 
 ## Struktur
