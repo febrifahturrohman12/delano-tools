@@ -1,7 +1,7 @@
 {
   "name": "vibe",
   "description": "Token-hygiene toolkit: scaffolds CLAUDE.md/PROGRESS.md/HANDOFF.md/DECISIONS.md, handoff+clear workflow, CLAUDE.md slimming, plus goblin & gremlin subagents.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "Febri Fahturrohman"
   },
