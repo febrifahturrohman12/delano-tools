@@ -9,6 +9,8 @@ Tujuan: menegakkan **rencana dulu, eksekusi kemudian**, dan memecah kerja jadi s
 
 **Kapan:** di awal sesi/tugas, SEBELUM ada perubahan kode. Kalau kerja sudah terlanjur jalan, tetap berguna tapi dampaknya berkurang — plan-gate paling kuat kalau di depan.
 
+**Wajib ada deskripsi tugas.** Idealnya dipanggil `/vibe:plan <tugas + konteks konkret>` sekali jalan. Kalau `$ARGUMENTS` **kosong**, JANGAN membuka putaran plan kosong (boros token) — minta user memberikan tujuan + file/constraint terkait dalam satu pesan dulu, baru lanjut ke langkah di bawah. Jangan panggil ulang skill ini tanpa argumen.
+
 Langkah:
 1. **Pahami dulu, jangan langsung ngoding.** Baca konteks seperlunya (`CLAUDE.md`, file yang relevan, `.vibe/HANDOFF.md`). Rujuk temuan dengan `path:line`.
 2. **Susun rencana ringkas** yang konkret:
@@ -17,6 +19,6 @@ Langkah:
    - Trade-off / risiko bila ada.
 3. **Plan-gate**: sajikan rencana ke user dan **minta persetujuan sebelum mengeksekusi**. Kalau lingkungan mendukung plan mode, gunakan `ExitPlanMode` agar plan benar-benar jadi gerbang. Jangan menyentuh kode sampai user setuju.
 4. **Decompose jadi todo terurut**: setelah disetujui, buat daftar tugas dengan **TodoWrite/TaskCreate** — tiap item = sub-tugas nyata. Selama eksekusi, **ubah statusnya** (in_progress → completed). Todo yang tak pernah berubah status = ritual kosong, hindari.
-5. Baru eksekusi (delegasikan penulisan ke `goblin`, pencarian ke `gremlin` bila cocok).
+5. Baru eksekusi. **Default: delegasikan penulisan/perubahan kode ke `goblin` via Agent tool, pencarian read-only lintas file ke `gremlin`** — jangan tulis kode sendiri kecuali edit satu-baris sepele. Beri subagent spesifikasi konkret (file, requirement, batasan), tunggu laporannya, lalu verifikasi & integrasikan. Delegasi yang benar-benar terjadi (bukan sekadar niat) = dimensi Delegasi terpenuhi.
 
 Prinsip: rencana yang di-approve di depan + todo yang benar-benar dipakai = fondasi sesi yang rapi. Jangan over-plan tugas sepele satu langkah.
