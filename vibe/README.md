@@ -26,8 +26,8 @@ project/
 | --- | --- |
 | `/vibe:init` | Scaffold `CLAUDE.md`, `PROGRESS.md`, `HANDOFF.md`, `DECISIONS.md` ke project (tanpa menimpa yang sudah ada) |
 | `/vibe:context` | Muat ulang konteks (`HANDOFF`/`PROGRESS`/`DECISIONS`) jadi briefing tipis — pemanasan sesi baru setelah `/clear` |
-| `/vibe:plan` | Plan-gate di awal + pecah jadi todo terurut sebelum eksekusi (Planning + Decomposition) |
-| `/vibe:verify` | Jalankan test/build/run, periksa hasil, tindak lanjuti kegagalan (Verifikasi) |
+| `/vibe:plan` | Plan-gate **dialog interaktif** (Setujui/Revisi/Batal); begitu disetujui, langsung mengalir ke todo + delegasi goblin + verifikasi dalam giliran sama (Planning + Decomposition) |
+| `/vibe:verify` | **Auto-deteksi** perintah verify dari `CLAUDE.md` "Perintah"/manifest project (npm/composer/cargo/go/make), jalankan yang relevan, tolak perintah destruktif (reset DB). Cukup ketik tanpa argumen (Verifikasi) |
 | `/vibe:handoff` | Ringkas sesi ke `HANDOFF.md` sebelum `/clear` — offload+reset, paling hemat token |
 | `/vibe:progress` | Update `PROGRESS.md` (checklist state) |
 | `/vibe:decide` | Catat satu keputusan arsitektur ke `DECISIONS.md` (ADR ringkas) biar tak diperdebatkan ulang |
@@ -87,14 +87,15 @@ Urutannya sengaja — tiap langkah menutup satu dimensi vibe-coding:
 | # | Langkah | Command / aksi | Kapan |
 |---|---|---|---|
 | 1 | Pemanasan | `/vibe:context` | Awal sesi (mis. setelah `/clear`) |
-| 2 | Rencanakan | `/vibe:plan` | **Sebelum** mulai ngoding |
-| 3 | Eksekusi | delegasi ke `goblin` (tulis kode) & `gremlin` (cari file) | Saat menggarap |
-| 4 | Buktikan | `/vibe:verify` | Setelah ada perubahan |
-| 5 | Catat | `/vibe:decide` / `/vibe:progress` | Ada keputusan / kemajuan |
+| 2 | Rencana → eksekusi | `/vibe:plan <tugas + konteks>` → dialog **"Setujui"** → **otomatis** lanjut ke todo + delegasi `goblin`/`gremlin` + verifikasi (tanpa ketik ulang spec) | **Sebelum** ngoding; approval memicu eksekusi |
+| 3 | Buktikan | `/vibe:verify` (auto-deteksi perintah project) | Kalau belum ke-cover langkah 2 |
+| 4 | Catat | `/vibe:decide` / `/vibe:progress` | Ada keputusan / kemajuan |
+| 5 | Audit | `/vibe:check` | **Sebelum** tutup / sebelum grading |
 | 6 | Tutup | `/vibe:handoff` → `/clear` | Context penuh / ganti topik |
-| 7 | Audit | `/vibe:check` | Sebelum menutup sesi |
 
 Sesi berikutnya balik ke langkah 1 (`/vibe:context`) untuk pemanasan dari `HANDOFF.md`.
+
+> **v0.4.0:** plan-gate kini dialog interaktif yang langsung mengalir ke eksekusi — tak perlu mengirim ulang spec sebagai pesan terpisah (menghemat token).
 
 ### 3. Kebiasaan biar efeknya nyata
 
