@@ -17,8 +17,13 @@ Langkah:
    - Tujuan (1–2 kalimat).
    - Pendekatan + file/komponen yang akan disentuh (sebut path konkret).
    - Trade-off / risiko bila ada.
-3. **Plan-gate**: sajikan rencana ke user dan **minta persetujuan sebelum mengeksekusi**. Kalau lingkungan mendukung plan mode, gunakan `ExitPlanMode` agar plan benar-benar jadi gerbang. Jangan menyentuh kode sampai user setuju.
+3. **Plan-gate (dialog interaktif)**: sajikan rencana, lalu minta keputusan lewat **AskUserQuestion** dengan opsi:
+   - **"Setujui — lanjut delegasi & eksekusi"**
+   - **"Revisi rencana"** (user beri koreksi → perbarui rencana → tanya lagi)
+   - **"Batal"**
+   (Kalau lingkungan mendukung plan mode, `ExitPlanMode` juga sah sebagai gerbang.) Jangan menyentuh kode sampai user memilih **Setujui**.
+   **Begitu user memilih Setujui, LANGSUNG lanjut ke langkah 4–5 dalam giliran yang sama** — jangan menunggu, jangan minta user mengetik ulang spec/instruksi eksekusi. Spec sudah ada di rencana; mengulangnya = putaran mubazir (boros token).
 4. **Decompose jadi todo terurut (WAJIB untuk tugas berlangkah)**: begitu disetujui, langsung buat **TodoWrite/TaskCreate** berisi sub-tugas nyata & terurut. Aturan pakai: tandai **satu** item `in_progress` sebelum mengerjakannya, lalu `completed` tepat setelah selesai — perbarui **real-time**, bukan sekaligus di akhir. Todo yang statusnya tak pernah berubah = ritual kosong (nol nilai). **Kecuali** tugas benar-benar satu langkah sepele → lewati todo; jangan mengarang sub-tugas palsu (itu gaming, penilai melihatnya).
-5. Baru eksekusi. **Default: delegasikan penulisan/perubahan kode ke `goblin` via Agent tool, pencarian read-only lintas file ke `gremlin`** — jangan tulis kode sendiri kecuali edit satu-baris sepele. Beri subagent spesifikasi konkret (file, requirement, batasan), tunggu laporannya, lalu verifikasi & integrasikan. Delegasi yang benar-benar terjadi (bukan sekadar niat) = dimensi Delegasi terpenuhi.
+5. Eksekusi (mengalir langsung dari langkah 4, tanpa giliran user tambahan). **Default: delegasikan penulisan/perubahan kode ke `goblin` via Agent tool, pencarian read-only lintas file ke `gremlin`** — jangan tulis kode sendiri kecuali edit satu-baris sepele. Beri subagent spesifikasi konkret (file, requirement, batasan) **dari rencana yang sudah disetujui** (jangan minta user mengetiknya ulang), tunggu laporannya, lalu verifikasi & integrasikan. Delegasi yang benar-benar terjadi (bukan sekadar niat) = dimensi Delegasi terpenuhi.
 
 Prinsip: rencana yang di-approve di depan + todo yang benar-benar dipakai = fondasi sesi yang rapi. Jangan over-plan tugas sepele satu langkah.
